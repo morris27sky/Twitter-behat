@@ -28,7 +28,7 @@ Feature
 cd features
 vi TwitterDirectMessaging.feature
 
-copy and paste the feature f
+copy and paste the feature from the feature file TwitterDirectMessaging.feature
 
 
 
