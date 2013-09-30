@@ -5,8 +5,11 @@ php 5.3
 Installation
 ================
 mkdir behat-twitter
+
 cd behat-testing-ftw
+
 curl -s http://getcomposer.org/installer | php
+
 vi composer.json
 
 Composer
