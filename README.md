@@ -1,3 +1,5 @@
+The chosen framework for this excerice will be behat. This is a php framework based on cucumber. see http://behat.org/ for more fetails.
+
 Pre req:
 
 php 5.3
