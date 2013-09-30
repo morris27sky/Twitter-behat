@@ -297,6 +297,23 @@ public function julieIsAFollowerOfJoe()
             throw new \RuntimeException("$userB is not following $userA");
         }
 
+
+        /**
+     * @Then /^Joe should get an error response$/
+     */
+    public function joeShouldGetAnErrorResponse()
+    {
+
+
+    }
+
+    /**
+     * @Given /^Julie should not receive Joe’s message$/
+     */
+    public function julieShouldNotReceiveJoeSMessage()
+    {
+
+        
     }
 
 /*
