@@ -14,7 +14,7 @@ default:
           contexts:
             UIBusinessSelector: ~
         Behat\MinkExtension\Extension:
-            base_url: "http://local.dev"
+            base_url: ~
             default_session: goutte
             goutte: ~
             selenium: ~
