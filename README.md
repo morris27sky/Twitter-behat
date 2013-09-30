@@ -44,3 +44,12 @@ featureContext
 ===============
 
 see featureContext.php file
+
+Running a feature
+======================
+you will need to be in the project dir
+
+To run a test, simply run the following
+
+
+bin/behat features/TwitterDirectMessaging.feature --verbose
