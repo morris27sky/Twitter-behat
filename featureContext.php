@@ -114,7 +114,7 @@ public function julieIsAFollowerOfJoe()
         $emailElement = $pageElement->find('css', '#signin-email');
         $passwordElement = $pageElement->find('css', '#signin-password');
 	
-	/  /inputing the username and password
+	   //inputing the username and password
         $emailElement->setValue($users[$userA]['username']);
         $passwordElement->setValue($users[$userA]['password']);
 
@@ -151,7 +151,6 @@ public function julieIsAFollowerOfJoe()
         $session->visit($url);
 
         sleep(1);
-        //$followElement = $pageElement->find('xpath', '//*[text()=$userA]');
         $pageElement = $session->getPage();
         $followElement = $pageElement->find('xpath', '//*[text()="@'.$users[$userB]['username'].'"]');
         if(!$followElement)
@@ -256,7 +255,46 @@ public function julieIsAFollowerOfJoe()
 
 }
 
+/**
+     * @Given /^Julie is NOT following Joe$/
+     */
+    public function julieIsNotFollowingJoe()
+    {
+        //Load the user.yml file to be read
+        $users = $this->loadYaml('users.yaml');
+        $userA = "Julie";
+        $userB = "Joe";
+       
+       //visit the page
+        $url = 'https://twitter.com';
+        $session = $this->getSession();
+        $session->visit($url);
 
+       //find the login elements on the page
+        $pageElement = $session->getPage();
+        $emailElement = $pageElement->find('css', '#signin-email');
+        $passwordElement = $pageElement->find('css', '#signin-password');
+
+       //inputing the username and password
+        $emailElement->setValue($users[$userA]['username']);
+        $passwordElement->setValue($users[$userA]['password']);
+
+       //clicking the login button
+        $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
+        $formElement->click();
+
+       //Visit the page /following
+        $url = 'https://twitter.com/following';
+        $pageElement = $session->getPage();
+        $session->visit($url);
+
+        //clicking the follow button to unfollow userB
+        $pageElement = $session->getPage();
+        $unfollowElement = $pageElement->find('css', '.js-follow-btn');
+        $unfollowElement->click();
+    
+
+    }
 
 /*
         $url = 'https://twitter.com/';
