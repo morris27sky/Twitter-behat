@@ -128,7 +128,6 @@ public function julieIsAFollowerOfJoe()
         $pageElement = $session->getPage();
         $session->visit($url);
         sleep(1);
-        //$followElement = $pageElement->find('xpath', '//*[text()=$userA]');
         $followElement = $pageElement->find('xpath', '//*[text()="@'.$users[$userB]['username'].'"]');
         if(!$followElement)
         {
@@ -189,7 +188,7 @@ public function julieIsAFollowerOfJoe()
         $emailElement->setValue($users[$userB]['username']);
         $passwordElement->setValue($users[$userB]['password']);
 
-    
+        //log in
         $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
         $formElement->click();
 
@@ -260,39 +259,43 @@ public function julieIsAFollowerOfJoe()
      */
     public function julieIsNotFollowingJoe()
     {
-        //Load the user.yml file to be read
+        //load yml
         $users = $this->loadYaml('users.yaml');
         $userA = "Julie";
         $userB = "Joe";
-       
-       //visit the page
-        $url = 'https://twitter.com';
+
+        //log out user
+        $url = 'https://twitter.com/logout';
+        $session = $this->getSession();
+        $session->visit($url);
+        $pageElement = $session->getPage();
+        $logoutElement = $pageElement->find('css', '.js-submit');
+        $logoutElement->click();
+
+        //visit twitter page
+        $url = 'https://twitter.com/';
         $session = $this->getSession();
         $session->visit($url);
 
-       //find the login elements on the page
         $pageElement = $session->getPage();
         $emailElement = $pageElement->find('css', '#signin-email');
         $passwordElement = $pageElement->find('css', '#signin-password');
-
-       //inputing the username and password
+    
+        //inputing the username and password
         $emailElement->setValue($users[$userA]['username']);
         $passwordElement->setValue($users[$userA]['password']);
 
-       //clicking the login button
+        //log in
         $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
         $formElement->click();
 
-       //Visit the page /following
-        $url = 'https://twitter.com/following';
-        $pageElement = $session->getPage();
-        $session->visit($url);
-
-        //clicking the follow button to unfollow userB
-        $pageElement = $session->getPage();
-        $unfollowElement = $pageElement->find('css', '.js-follow-btn');
-        $unfollowElement->click();
-    
+        $followbtnElement = $pageElement->find('css', '.follow-button');
+        $followbtnElement->click();
+        $followElement = $pageElement->find('xpath', '//*[text()="@'.$users[$userB]['username'].'"]');
+        if(!$followElement)
+        {
+            throw new \RuntimeException("$userB is not following $userA");
+        }
 
     }
 
