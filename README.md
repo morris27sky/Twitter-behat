@@ -17,6 +17,8 @@ Composer
 php composer.phar install
 
 New directory should look like this
+
+
 bin     composer.json   composer.lock   composer.phar   vendor
 
 
