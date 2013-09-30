@@ -6,6 +6,11 @@ you will need the following
 
 php 5.3
 
+selenium server - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar
+
+run java -jar selenium-server-standalone-2.33.0.jar to start server
+
+
 Installation
 ================
 mkdir behat-twitter
