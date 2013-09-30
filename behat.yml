@@ -1,0 +1,21 @@
+copy the following into your behat.yml file
+
+default:
+    context:
+        parameters:
+            javascript_session: webdriver
+            browser: firefox
+            show_cmd: open %s
+    extensions:
+        OrangeDigital\BusinessSelectorExtension\Extension:
+          urlFilePath: urls.yml
+          selectorFilePath: selectors.yml
+          assetPath: path
+          contexts:
+            UIBusinessSelector: ~
+        Behat\MinkExtension\Extension:
+            base_url: "http://local.dev"
+            default_session: goutte
+            goutte: ~
+            selenium: ~
+            selenium2: ~
