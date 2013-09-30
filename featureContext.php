@@ -60,17 +60,6 @@ class FeatureContext extends BehatContext
     {
       return $this->getSubcontext('mink')->getSession($name);
     } 
-
-
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
  
 /**
      * @Given /^"([^"]*)" and "([^"]*)" are on twitter$/
@@ -111,34 +100,30 @@ class FeatureContext extends BehatContext
      */
 public function julieIsAFollowerOfJoe()
 {
-	//Load the user.yml file to be read
+	   //Load the user.yml file to be read
         $users = $this->loadYaml('users.yaml');
         $userA = "Julie";
         $userB = "Joe";
-	//visit the page
+	   //visit the page
         $url = 'https://twitter.com';
         $session = $this->getSession();
         $session->visit($url);
 
-	//find the login elements on the page
+	   //find the login elements on the page
         $pageElement = $session->getPage();
         $emailElement = $pageElement->find('css', '#signin-email');
         $passwordElement = $pageElement->find('css', '#signin-password');
-        //$formElement = $pageElement->find('css', 'form.signin button');
 	
-	//inputing the username and password
+	/  /inputing the username and password
         $emailElement->setValue($users[$userA]['username']);
         $passwordElement->setValue($users[$userA]['password']);
-        //$formElement = $pageElement->find('css', 'form.signin');
-        //$formElement->submit();
-	
-	//clicking the login button
-	    $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
-        //sleep(1);
-        $formElement->click();
-        //sleep(3);
 
-	//Visit the page /following
+	
+	   //clicking the login button
+	    $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
+        $formElement->click();
+
+	   //Visit the page /following
         $url = 'https://twitter.com/following';
         $pageElement = $session->getPage();
         $session->visit($url);
@@ -155,12 +140,12 @@ public function julieIsAFollowerOfJoe()
      */
     public function joeIsAFollowerOfJulie()
     {
-    //Load the user.yml file to be read
+        //Load the user.yml file to be read
         $users = $this->loadYaml('users.yaml');
         $userA = "Julie";
         $userB = "Joe";
         
-    //visit the page
+        //visit the page
         $url = 'https://twitter.com/followers';
         $session = $this->getSession();
         $session->visit($url);
@@ -200,19 +185,14 @@ public function julieIsAFollowerOfJoe()
         $pageElement = $session->getPage();
         $emailElement = $pageElement->find('css', '#signin-email');
         $passwordElement = $pageElement->find('css', '#signin-password');
-        //$formElement = $pageElement->find('css', 'form.signin button');
     
-    //inputing the username and password
+        //inputing the username and password
         $emailElement->setValue($users[$userB]['username']);
         $passwordElement->setValue($users[$userB]['password']);
-        //$formElement = $pageElement->find('css', 'form.signin');
-        //$formElement->submit();
+
     
-    //clicking the login button
         $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
-        //sleep(1);
         $formElement->click();
-        //sleep(3);
 
         //Visit the page /following
         $url = 'https://twitter.com/following';
@@ -226,18 +206,12 @@ public function julieIsAFollowerOfJoe()
         sleep(5);
         $dmtextElement = $pageElement->find('css', '#tweet-box-dm-new-conversation');
         sleep(5);
-        //$dmtextElement->keyPress('a');
         $dmtextElement->setValue('This is a test');
         sleep(5);
+        //The test seems to be failing intermittently at this point when xpath or css is used. not entirely sure what is going on at twitters end. This might skip ohter steps..
         $tweetactionElement = $pageElement->find('css', '#dm_dialog_conversation.modal-content .twttr-dialog-body .tweet-button button');
         sleep(5);
         $tweetactionElement->click();
-
-
-
-        //$tweetactionElement = $pageElement->find('css', '#dm_dialog_conversation.modal-content .twttr-dialog-body .tweet-button');
-        //sleep(5);
-        //$tweetactionElement->click();
 
     }
 
@@ -265,19 +239,15 @@ public function julieIsAFollowerOfJoe()
         $pageElement = $session->getPage();
         $emailElement = $pageElement->find('css', '#signin-email');
         $passwordElement = $pageElement->find('css', '#signin-password');
-        //$formElement = $pageElement->find('css', 'form.signin button');
     
-    //inputing the username and password
+        //inputing the username and password
         $emailElement->setValue($users[$userA]['username']);
         $passwordElement->setValue($users[$userA]['password']);
-        //$formElement = $pageElement->find('css', 'form.signin');
-        //$formElement->submit();
-    
-    //clicking the login button
-        $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
-        //sleep(1);
-        $formElement->click();
 
+    
+        //clicking the login button
+        $formElement = $pageElement->find('css', '.submit.btn.primary-btn.flex-table-btn.js-submit');
+        $formElement->click();
         $dropdownElement = $pageElement->find('css', '.user-dropdown');
         $dropdownElement->click();
         $dmtoggleElement = $pageElement->find('css', '.js-dm-dialog');
