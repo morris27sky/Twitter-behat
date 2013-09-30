@@ -6,7 +6,7 @@ Installation
 ================
 mkdir behat-twitter
 
-cd behat-testing-ftw
+cd behat-twitter
 
 curl -s http://getcomposer.org/installer | php
 
@@ -16,7 +16,7 @@ Composer
 =================
 php composer.phar install
 
-Dir should look like this
+New directory should look like this
 bin     composer.json   composer.lock   composer.phar   vendor
 
 
