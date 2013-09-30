@@ -52,4 +52,6 @@ you will need to be in the project dir
 To run a test, simply run the following
 
 
-bin/behat features/TwitterDirectMessaging.feature --verbose
+bin/behat features/TwitterDirectMessaging.feature
+
+For more info on commands for running or report generating in html format or more, see http://docs.behat.org/guides/6.cli.html
