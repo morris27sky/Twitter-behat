@@ -201,6 +201,9 @@ public function julieIsAFollowerOfJoe()
         $dropdownElement->click();
         $dmLinkElement = $pageElement->find('css', '.dm-text.dropdown-link');
         $dmLinkElement->click();
+        //$dmtextElement = $pageElement->find('css', '#dm_dialog_conversation .tweet-content .tweet-box');
+        //sleep(5);
+        //$dmtextElement->click();
         sleep(5);
         $dmtextElement = $pageElement->find('css', '#tweet-box-dm-new-conversation');
         sleep(5);
@@ -208,6 +211,7 @@ public function julieIsAFollowerOfJoe()
         sleep(5);
         //The test seems to be failing intermittently at this point when xpath or css is used. not entirely sure what is going on at twitters end. This might skip ohter steps..
         $tweetactionElement = $pageElement->find('css', '#dm_dialog_conversation.modal-content .twttr-dialog-body .tweet-button button');
+        //$tweetactionElement = $pageElement->find('css', '#dm_dialog-dialog #dm_dialog_conversation .tweet-button button');
         sleep(5);
         $tweetactionElement->click();
 
