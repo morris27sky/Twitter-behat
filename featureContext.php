@@ -301,13 +301,22 @@ public function julieIsAFollowerOfJoe()
             throw new \RuntimeException("$userB is not following $userA");
         }
 
-
-        /**
+    /**
      * @Then /^Joe should get an error response$/
      */
     public function joeShouldGetAnErrorResponse()
     {
+        //load yml
+        //$users = $this->loadYaml('users.yaml');
+        //$userA = "Julie";
+        //$userB = "Joe";
 
+        //Error message checking
+        $dmerrorElement = $pageElement->find('css', '.dm-error');
+        if(!$dmerrorElement)
+        {
+            throw new \RuntimeException("$error message not displayed");
+        }
 
     }
 
